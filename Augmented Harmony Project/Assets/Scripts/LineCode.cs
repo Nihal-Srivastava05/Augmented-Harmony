@@ -13,7 +13,7 @@ public class LineCode : MonoBehaviour
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.startWidth = 0.1f;
+        lineRenderer.startWidth = 0.2f;
         lineRenderer.endWidth = 0.1f;
     }
 
