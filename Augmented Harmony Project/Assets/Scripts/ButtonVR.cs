@@ -11,18 +11,20 @@ public class ButtonVR : MonoBehaviour
     GameObject presser;
     AudioSource sound;
     bool isPressed;
+    private Vector3 initial_position;
 
     // Start is called before the first frame update
     void Start()
     {
         sound = GetComponent<AudioSource>();
         isPressed = false;
+        initial_position = this.transform.position;
     }
 
     private void OnTriggerEnter(Collider other) {
         if(!isPressed)
         {
-            button.transform.localPosition = new Vector3(0, 0.003f, 0);
+            // button.transform.localPosition = new Vector3(0, 0.003f, 0);
             presser = other.gameObject;
             onPress.Invoke();
             sound.Play();
@@ -33,7 +35,8 @@ public class ButtonVR : MonoBehaviour
     private void OnTriggerExit(Collider other) {
         if(other.gameObject == presser) 
         {
-            button.transform.localPosition = new Vector3(0, 0.015f, 0);
+            // button.transform.localPosition = new Vector3(0, 0.015f, 0);
+            button.transform.position = initial_position;
             onRelease.Invoke();
             isPressed = false;
         }
